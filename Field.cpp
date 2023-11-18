@@ -8,10 +8,10 @@ Field::Field()
     d = 3;
 
     // array initialization
-    pFieldSize = new Fishka *[3];
+    fieldElement = new Fishka *[3];
     for (int i = 0; i < 3; ++i)
     {
-        pFieldSize[i] = new Fishka[3];
+        fieldElement[i] = new Fishka[3];
     }
 }
 
@@ -23,10 +23,10 @@ Field::Field(int row, int col)
     d = row;
 
     // array initialization
-    pFieldSize = new Fishka*[row];
+    fieldElement = new Fishka*[row];
     for (int i = 0; i < row; ++i)
     {
-        pFieldSize[i] = new Fishka[col];
+        fieldElement[i] = new Fishka[col];
     }
 }
 
@@ -38,7 +38,7 @@ void Field::fillField()
     {
         for (int j = 0; j < col; ++j)
         {
-            pFieldSize[i][j] = Fishka(value,i,j);
+            fieldElement[i][j] = Fishka(value,i,j);
             --value;
         }
     }
@@ -49,7 +49,7 @@ void Field::displayField()
     std::cout << "------------------------" << std::endl;
     for (int i = 0; i < row; ++i) {
         for (int j = 0; j < col; ++j) {
-            std::cout << pFieldSize[i][j].getFishkaNumber() << "\t";
+            std::cout << fieldElement[i][j].getFishkaNumber() << "\t";
         }
         std::cout << std::endl;
     }
@@ -60,10 +60,44 @@ void Field::displayField()
 Field::~Field()
 {
     for (int i = 0; i < row; ++i) {
-        delete[] pFieldSize[i];
+        delete[] fieldElement[i];
     }
-    delete[] pFieldSize;
+    delete[] fieldElement;
     std::cout << "Field Destructor" << std::endl;
+}
+
+void Field::Move(int fishkaNumber)
+{
+    if (validFiska(fishkaNumber))
+    {
+        fieldElement[getPostionOnField(fishkaNumber)[0]] [getPostionOnField(fishkaNumber)[1]]
+        .setFishkaNumber(fishkaNumber);
+        //std::cout << getPostionOnField(fishkaNumber)[0] << " " << getPostionOnField(fishkaNumber)[1] << std::endl;
+        std::cout << "Correct" << std::endl;
+    }
+    else std::cout << "Incorrect" << std::endl;
+}
+
+bool Field::validFiska(int fishkaNumber) {
+    for (int i = 0; i < row; ++i) {
+        for (int j = 0; j < col; ++j) {
+            if ( fieldElement[i][j].getFishkaNumber() == fishkaNumber) { return true; }
+        }
+    }
+    return false;
+}
+
+int *Field::getPostionOnField(int fishkaNumber) {
+    for (int i = 0; i < row; ++i) {
+        for (int j = 0; j < col; ++j) {
+            if ( fieldElement[i][j].getFishkaNumber() == fishkaNumber)
+            {
+                postionField[0] = i;
+                postionField[1] = j;
+                return postionField;
+            }
+        }
+    }
 }
 
 

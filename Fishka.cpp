@@ -5,21 +5,25 @@
 Fishka::Fishka()
 {
     number = 0;
-    posX = 0;
-    posY = 0;
+    position[0] = 0;
+    position[1] = 0;
 }
 
 Fishka::Fishka(int number, int x, int y)
 {
     this->number = number;
-    posX = x;
-    posY = y;
+    position[0] = x;
+    position[1] = y;
 }
 
 int Fishka::getFishkaNumber() { return number; }
 
-void Fishka::getPosition() {
-    std::cout << posX << " " << posY << std::endl;
+int * Fishka::getFishkaPosition(int fishkaNumber) {
+    return position;
 }
 
 Fishka::~Fishka() {}
+
+void Fishka::setFishkaNumber(int fishkaNumber) {
+    number = fishkaNumber;
+}

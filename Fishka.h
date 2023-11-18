@@ -6,13 +6,15 @@ class Fishka
 {
 protected:
     int number;
-    int posX, posY;
+    // first element is X coordinate, second is Y coordinate
+    int position[2];
 
 public:
     Fishka();
     Fishka(int number,int x, int y);
     int getFishkaNumber();
-    void getPosition();
+    int * getFishkaPosition(int fishkaNumber);
+    void setFishkaNumber(int fishkaNumber);
     ~Fishka();
 
 };

@@ -7,13 +7,18 @@ class Field : private Fishka
 {
 private:
     int row, col, d;
-    Fishka ** pFieldSize;
+    int postionField[2];
+    Fishka ** fieldElement;
+
+    bool validFiska(int fishkaNumber);
+    int * getPostionOnField(int fishkaNumber);
+
 public:
     Field();
     Field(int weight,int height);
     void fillField();
     void displayField();
-    void getFishkaPos();
+    void Move(int chooseFishka);
     ~Field();
 };
 
