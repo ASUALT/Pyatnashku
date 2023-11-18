@@ -4,9 +4,8 @@
 
 class Fishka
 {
-private:
+protected:
     int number;
-
     int posX, posY;
 
 public:

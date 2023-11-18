@@ -1,6 +1,3 @@
-//
-// Created by Administrator on 11/17/2023.
-//
 #include <iostream>
 #include "Fishka.h"
 
@@ -25,4 +22,4 @@ void Fishka::getPosition() {
     std::cout << posX << " " << posY << std::endl;
 }
 
-Fishka::~Fishka() { std::cout << "Fishka Destructor" << std::endl;}
+Fishka::~Fishka() {}

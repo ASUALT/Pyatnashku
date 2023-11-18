@@ -6,10 +6,6 @@ using namespace std;
 
 int main()
 {
-    Fishka fs(2,1,3);
-    cout << fs.getFishkaNumber() << endl;
-    fs.getPosition();
-
     Field fd(4,4);
     fd.fillField();
     fd.displayField();

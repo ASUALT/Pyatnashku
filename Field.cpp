@@ -1,6 +1,3 @@
-//
-// Created by Administrator on 11/18/2023.
-//
 #include <iostream>
 #include "Field.h"
 
@@ -11,16 +8,14 @@ Field::Field()
     d = 3;
 
     // array initialization
-    pFieldSize = new int*[3];
+    pFieldSize = new Fishka *[3];
     for (int i = 0; i < 3; ++i)
     {
-        pFieldSize[i] = new int[3];
+        pFieldSize[i] = new Fishka[3];
     }
 }
 
 /// Max size is 9x9, min 3x3
-/// \param weight
-/// \param height
 Field::Field(int row, int col)
 {
     this->row = row;
@@ -28,21 +23,22 @@ Field::Field(int row, int col)
     d = row;
 
     // array initialization
-    pFieldSize = new int*[row];
+    pFieldSize = new Fishka*[row];
     for (int i = 0; i < row; ++i)
     {
-        pFieldSize[i] = new int[col];
+        pFieldSize[i] = new Fishka[col];
     }
 }
 
 void Field::fillField()
 {
-    int value = d*d-1;
+    int value = d*d-1; // the max number in the field
+    // fill up the field
     for (int i = 0; i < row; ++i)
     {
         for (int j = 0; j < col; ++j)
         {
-            pFieldSize[i][j] = value;
+            pFieldSize[i][j] = Fishka(value,i,j);
             --value;
         }
     }
@@ -53,7 +49,7 @@ void Field::displayField()
     std::cout << "------------------------" << std::endl;
     for (int i = 0; i < row; ++i) {
         for (int j = 0; j < col; ++j) {
-            std::cout << pFieldSize[i][j] << "\t";
+            std::cout << pFieldSize[i][j].getFishkaNumber() << "\t";
         }
         std::cout << std::endl;
     }
@@ -69,5 +65,7 @@ Field::~Field()
     delete[] pFieldSize;
     std::cout << "Field Destructor" << std::endl;
 }
+
+
 
 

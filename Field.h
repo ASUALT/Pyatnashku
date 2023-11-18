@@ -1,21 +1,19 @@
-//
-// Created by Administrator on 11/18/2023.
-//
-
 #ifndef PROJECTS_FIELD_H
 #define PROJECTS_FIELD_H
 
+#include "Fishka.h"
 
-class Field
+class Field : private Fishka
 {
 private:
     int row, col, d;
-    int ** pFieldSize;
+    Fishka ** pFieldSize;
 public:
     Field();
     Field(int weight,int height);
     void fillField();
     void displayField();
+    void getFishkaPos();
     ~Field();
 };
 
