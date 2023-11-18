@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.26)
+project(Projects)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(Projects main.cpp
+        Fishka.cpp
+        Fishka.h
+        Field.cpp
+        Field.h
+)
