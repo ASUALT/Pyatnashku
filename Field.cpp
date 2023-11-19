@@ -70,8 +70,11 @@ void Field::Move(int fishkaNumber)
 {
     if (validFiska(fishkaNumber))
     {
-        fieldElement[getPostionOnField(fishkaNumber)[0]] [getPostionOnField(fishkaNumber)[1]]
-        .setFishkaNumber(fishkaNumber);
+        int * fishkaPos = getPostionOnField(fishkaNumber);
+        int * zeroFishkaPos = getPostionOnField(0);
+
+        fieldElement[fishkaPos[0]][fishkaPos[1]].setFishkaNumber(0);
+        fieldElement[zeroFishkaPos[0]][zeroFishkaPos[1]].setFishkaNumber(fishkaNumber);
         //std::cout << getPostionOnField(fishkaNumber)[0] << " " << getPostionOnField(fishkaNumber)[1] << std::endl;
         std::cout << "Correct" << std::endl;
     }
@@ -92,9 +95,7 @@ int *Field::getPostionOnField(int fishkaNumber) {
         for (int j = 0; j < col; ++j) {
             if ( fieldElement[i][j].getFishkaNumber() == fishkaNumber)
             {
-                postionField[0] = i;
-                postionField[1] = j;
-                return postionField;
+                return fieldElement[i][j].getFishkaPosition(fishkaNumber);
             }
         }
     }
