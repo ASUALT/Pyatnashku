@@ -11,6 +11,7 @@ private:
 
     bool validFiska(int fishkaNumber);
     int * getPostionOnField(int fishkaNumber);
+    void shuffleFieldElment();
 
 public:
     Field();

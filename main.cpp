@@ -10,7 +10,6 @@ int main()
     fd.fillField();
     fd.displayField();
     fd.Move(4);
-    fd.displayField();
 
 
     return 0;

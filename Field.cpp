@@ -1,5 +1,7 @@
 #include <iostream>
 #include "Field.h"
+#include <algorithm>
+#include <ctime>
 
 Field::Field()
 {
@@ -40,6 +42,30 @@ void Field::fillField()
         {
             fieldElement[i][j] = Fishka(value,i,j);
             --value;
+        }
+    }
+    shuffleFieldElment();
+}
+
+void Field::shuffleFieldElment() {
+    std::srand(static_cast<unsigned int>(std::time(0)));
+
+    // shuffle array
+    for (int i = 0; i < row; ++i) {
+        for (int j = 0; j < col; ++j) {
+                int random_row = std::rand() % row;
+                int random_col = std::rand() % col;
+                std::swap(fieldElement[i][j], fieldElement[random_row][random_col]);
+        }
+    }
+
+    // placing element with number "0" at the end of the array
+    for (int i = 0; i < row; ++i) {
+        for (int j = 0; j < col; ++j) {
+            if (fieldElement[i][j].getFishkaNumber() == 0) {
+                std::swap(fieldElement[i][j], fieldElement[row - 1][col - 1]);
+                break;
+            }
         }
     }
 }
@@ -100,6 +126,8 @@ int *Field::getPostionOnField(int fishkaNumber) {
         }
     }
 }
+
+
 
 
 
