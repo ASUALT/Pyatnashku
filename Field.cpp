@@ -7,7 +7,6 @@ Field::Field()
 {
     row=3;
     col=3;
-    d = 3;
 
     // array initialization
     fieldElement = new Fishka *[3];
@@ -22,7 +21,6 @@ Field::Field(int row, int col)
 {
     this->row = row;
     this->col = col;
-    d = row;
 
     // array initialization
     fieldElement = new Fishka*[row];
@@ -34,7 +32,7 @@ Field::Field(int row, int col)
 
 void Field::fillField()
 {
-    int value = d*d-1; // the max number in the field
+    int value = row*col-1; // the max number in the field
     // fill up the field
     for (int i = 0; i < row; ++i)
     {
@@ -96,13 +94,18 @@ void Field::Move(int fishkaNumber)
 {
     if (validFiska(fishkaNumber))
     {
-        int * fishkaPos = getPostionOnField(fishkaNumber);
-        int * zeroFishkaPos = getPostionOnField(0);
+        // replacing "0" element to selected fishka
+        int fishkaPosX = getPostionOnField(fishkaNumber)[0];
+        int fishkaPosY = getPostionOnField(fishkaNumber)[1];
 
-        fieldElement[fishkaPos[0]][fishkaPos[1]].setFishkaNumber(0);
-        fieldElement[zeroFishkaPos[0]][zeroFishkaPos[1]].setFishkaNumber(fishkaNumber);
-        //std::cout << getPostionOnField(fishkaNumber)[0] << " " << getPostionOnField(fishkaNumber)[1] << std::endl;
-        std::cout << "Correct" << std::endl;
+        int zeroFishkaPosX = getPostionOnField(0)[0];
+        int zeroFishkaPosY = getPostionOnField(0)[1];
+
+        // replacing "0" element to selected fishka
+        std::swap(fieldElement[fishkaPosX][fishkaPosY], fieldElement[zeroFishkaPosX][zeroFishkaPosY]);
+        std::cout << fishkaPosX << " " << fishkaPosY << std::endl;
+        std::cout << zeroFishkaPosX << " " << zeroFishkaPosY << std::endl;
+        //std::cout << "Correct" << std::endl;
     }
     else std::cout << "Incorrect" << std::endl;
 }
@@ -121,7 +124,9 @@ int *Field::getPostionOnField(int fishkaNumber) {
         for (int j = 0; j < col; ++j) {
             if ( fieldElement[i][j].getFishkaNumber() == fishkaNumber)
             {
-                return fieldElement[i][j].getFishkaPosition(fishkaNumber);
+                positionOnField[0] = i;
+                positionOnField[1] = j;
+                return positionOnField;
             }
         }
     }

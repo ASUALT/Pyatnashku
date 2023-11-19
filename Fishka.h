@@ -15,6 +15,7 @@ public:
     int getFishkaNumber();
     int * getFishkaPosition(int fishkaNumber);
     void setFishkaNumber(int fishkaNumber);
+    void setFishkaPostion(int posX, int posY);
     ~Fishka();
 
 };

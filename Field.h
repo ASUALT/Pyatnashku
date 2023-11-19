@@ -6,8 +6,9 @@
 class Field : private Fishka
 {
 private:
-    int row, col, d;
+    int row, col;
     Fishka ** fieldElement;
+    int positionOnField[2];
 
     bool validFiska(int fishkaNumber);
     int * getPostionOnField(int fishkaNumber);

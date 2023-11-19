@@ -27,3 +27,8 @@ Fishka::~Fishka() {}
 void Fishka::setFishkaNumber(int fishkaNumber) {
     number = fishkaNumber;
 }
+
+void Fishka::setFishkaPostion(int posX, int posY) {
+    position[0] = posX;
+    position[1] = posY;
+}
