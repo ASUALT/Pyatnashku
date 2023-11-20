@@ -6,7 +6,7 @@ using namespace std;
 
 int main()
 {
-    Field fd(3,3);
+    Field fd(4,4);
     fd.fillField();
     //fd.displayField();
     //fd.Move(2);
@@ -18,7 +18,8 @@ int main()
         cin >> number;
         fd.Move(number);
         cout << "============================" << endl;
-    } while (true);
+    } while (!fd.finalCheck());
+    cout << "Completed!" << endl;
 
 
 

@@ -6,13 +6,14 @@
 class Field : private Fishka
 {
 private:
-    int row, col;
+    int row, col, maxValue;
     Fishka ** fieldElement;
     int positionOnField[2];
 
     bool validFiska(int fishkaNumber);
     int * getPostionOnField(int fishkaNumber);
     void shuffleFieldElment();
+    bool checkNearZero(int fishkaNumber);
 
 public:
     Field();
@@ -20,6 +21,7 @@ public:
     void fillField();
     void displayField();
     void Move(int chooseFishka);
+    bool finalCheck();
     ~Field();
 };
 
